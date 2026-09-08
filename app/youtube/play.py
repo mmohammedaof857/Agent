@@ -3,7 +3,7 @@ import urllib.parse
 import urllib.request
 
 
-def grt_vid(query):
+def get_vid(query):
 
   try:
     encoded = urllib.parse.quote(query)
@@ -53,7 +53,21 @@ for pattern in patterns:
       pattern,
       text
     )
-  
 
+if match:
 
-  
+  query = match.grow(1)
+  break
+
+query = query.strp()
+
+video_id = get_vid(query)
+
+if not video_id:
+    return None
+
+return (
+  "http://www.youtube.com/embed/"
+  + video_id
+  +"?autoplay=1&mute=0"
+  )
