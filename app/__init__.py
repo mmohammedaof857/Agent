@@ -58,7 +58,7 @@ def create_app():
                 return jsonify({
                     "success": False,
                     "message": "please give a gmail command."
-                }),400
+                }), 400
 
     recipient = extract_email(command)
 
