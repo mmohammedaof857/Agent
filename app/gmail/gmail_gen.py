@@ -20,9 +20,45 @@ convert thr user's voice command into a professional email.
 
 Rules:
 -Do not copy the command literally.
--Do not explainanything.
+-Do not explain anything.
 -Do not invent names, dates, prices, companies, attachments, or facts.
 -keep the email natural and concise.
 
 Output exactly:
+
+SUBJECT: <subject>
+BODY:
+<email body>
+
+User command:
+(command)
+"""
+
+  url = (
+    f"https://generaqtivelanguage.googleapis.com/"
+    f"v1beta/models/(MODEL):generatecontent"
+)
+
+payload = {
+  "contents": [{"parts": [{"text": prompt}}}],
+  "generationconig": {
+    "Temperature":0.7.
+    "maxOutputTokens": 800
+  }
+}
+
+req = urllib.request.Request(
+  url,
+  data=json.dumps(payload).encode(),
+  headers={
+    "content-Type":"application/json",
+    "x-goog-api-key": API_KEY
+  },
+    method="POST"
+)
+
+for attempt in range(4)
+  try:
+      with urlib.request.urlopen(req, timeout=30) as response:
+        data = json.loads(
 
